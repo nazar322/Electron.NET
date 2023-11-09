@@ -85,6 +85,35 @@ public class WebContents
     private event Action _didFinishLoad;
 
     /// <summary>
+    /// Emitted when a user or the page wants to start navigation on the main frame.
+    /// </summary>
+    public event Action<string> OnWillNavigate
+    {
+        add
+        {
+            if (_willNavigate == null)
+            {
+                BridgeConnector.Socket.On<string>("webContents-willNavigate" + Id, (url) =>
+                {
+                    _willNavigate(url);
+                });
+
+                BridgeConnector.Socket.Emit("register-webContents-willNavigate", Id);
+            }
+            _willNavigate += value;
+        }
+        remove
+        {
+            _willNavigate -= value;
+
+            if (_willNavigate == null)
+                BridgeConnector.Socket.Off("webContents-willNavigate" + Id);
+        }
+    }
+
+    private event Action<string> _willNavigate;
+
+    /// <summary>
     /// Emitted when any frame (including main) starts navigating.
     /// </summary>
     public event Action<string> OnDidStartNavigation

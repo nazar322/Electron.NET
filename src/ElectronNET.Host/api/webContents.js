@@ -19,6 +19,13 @@ module.exports = (socket) => {
             electronSocket.emit('webContents-didFinishLoad' + id);
         });
     });
+    socket.on('register-webContents-willNavigate', (id) => {
+        const browserWindow = getWindowById(id);
+        browserWindow.webContents.removeAllListeners('will-navigate');
+        browserWindow.webContents.on('will-navigate', (_, url) => {
+            electronSocket.emit('webContents-willNavigate' + id, url);
+        });
+    });
     socket.on('register-webContents-didStartNavigation', (id) => {
         const browserWindow = getWindowById(id);
         browserWindow.webContents.removeAllListeners('did-start-navigation');
