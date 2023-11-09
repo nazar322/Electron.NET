@@ -1,7 +1,7 @@
 ﻿namespace ElectronNET.API.Entities;
 
 /// <summary>
-/// 'OnDidNavigate' event details.
+/// 'DidNavigate' event details.
 /// </summary>
 public class OnDidNavigateInfo
 {

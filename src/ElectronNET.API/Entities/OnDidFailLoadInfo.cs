@@ -1,7 +1,7 @@
 ﻿namespace ElectronNET.API.Entities;
 
 /// <summary>
-/// 'OnDidFailLoad' event details.
+/// 'DidFailLoad' event details.
 /// </summary>
 public class OnDidFailLoadInfo
 {

@@ -15,7 +15,7 @@ namespace ElectronNET.WebApp.Controllers
                     string viewPath = $"http://localhost:{BridgeSettings.WebPort}/crashhang/processcrash";
 
                     var browserWindow = await Electron.WindowManager.CreateWindowAsync(viewPath);
-                    browserWindow.WebContents.OnCrashed += async (killed) =>
+                    browserWindow.WebContents.Crashed += async (killed) =>
                     {
                         var options = new MessageBoxOptions("This process has crashed.")
                         {

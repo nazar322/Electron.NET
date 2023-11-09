@@ -26,7 +26,7 @@
 
           <h5>Main Process (C#)</h5>
           <pre><code class="csharp">var browserWindow = await Electron.WindowManager.CreateWindowAsync(viewPath);
-browserWindow.WebContents.OnCrashed += async (killed) => {
+browserWindow.WebContents.Crashed += async (killed) => {
     var options = new MessageBoxOptions("This process has crashed.") {
         Type = MessageBoxType.info,
         Title = "Renderer Process Crashed",

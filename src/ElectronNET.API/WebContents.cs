@@ -28,7 +28,7 @@ public class WebContents
     /// <summary>
     /// Emitted when the renderer process crashes or is killed.
     /// </summary>
-    public event Action<bool> OnCrashed
+    public event Action<bool> Crashed
     {
         add
         {
@@ -58,7 +58,7 @@ public class WebContents
     /// Emitted when the navigation is done, i.e. the spinner of the tab has
     /// stopped spinning, and the onload event was dispatched.
     /// </summary>
-    public event Action OnDidFinishLoad
+    public event Action DidFinishLoad
     {
         add
         {
@@ -87,7 +87,7 @@ public class WebContents
     /// <summary>
     /// Emitted when a user or the page wants to start navigation on the main frame.
     /// </summary>
-    public event Action<string> OnWillNavigate
+    public event Action<string> WillNavigate
     {
         add
         {
@@ -116,7 +116,7 @@ public class WebContents
     /// <summary>
     /// Emitted when any frame (including main) starts navigating.
     /// </summary>
-    public event Action<string> OnDidStartNavigation
+    public event Action<string> DidStartNavigation
     {
         add
         {
@@ -146,7 +146,7 @@ public class WebContents
     /// Emitted when a main frame navigation is done.
     /// This event is not emitted for in-page navigations, such as clicking anchor links or updating the window.location.hash. Use did-navigate-in-page event for this purpose.
     /// </summary>
-    public event Action<OnDidNavigateInfo> OnDidNavigate
+    public event Action<OnDidNavigateInfo> DidNavigate
     {
         add
         {
@@ -174,9 +174,9 @@ public class WebContents
 
     /// <summary>
     /// Emitted when a server side redirect occurs during navigation. For example a 302 redirect.
-    /// This event will be emitted after OnDidStartNavigation and always before the OnDidRedirectNavigation event for the same navigation.
+    /// This event will be emitted after DidStartNavigation and always before the DidRedirectNavigation event for the same navigation.
     /// </summary>
-    public event Action<string> OnWillRedirect
+    public event Action<string> WillRedirect
     {
         add
         {
@@ -205,7 +205,7 @@ public class WebContents
     /// <summary>
     /// Emitted after a server side redirect occurs during navigation. For example a 302 redirect.
     /// </summary>
-    public event Action<string> OnDidRedirectNavigation
+    public event Action<string> DidRedirectNavigation
     {
         add
         {
@@ -233,9 +233,9 @@ public class WebContents
 
 
     /// <summary>
-    /// This event is like OnDidFinishLoad but emitted when the load failed.
+    /// This event is like DidFinishLoad but emitted when the load failed.
     /// </summary>
-    public event Action<OnDidFailLoadInfo> OnDidFailLoad
+    public event Action<OnDidFailLoadInfo> DidFailLoad
     {
         add
         {
