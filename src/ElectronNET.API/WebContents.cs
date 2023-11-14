@@ -12,6 +12,8 @@ namespace ElectronNET.API;
 /// </summary>
 public class WebContents
 {
+    private Action<string, string, string, string> _setWindowOpenHandler;
+
     /// <summary>
     /// Gets the identifier.
     /// </summary>
@@ -475,6 +477,30 @@ public class WebContents
     public void InsertCSS(bool isBrowserWindow, string path)
     {
         BridgeConnector.Socket.Emit("webContents-insertCSS", Id, isBrowserWindow, path);
+    }
+
+    /// <summary>
+    /// Called before creating a window.
+    /// A new window is requested by the renderer, e.g. by `window.open()`, a link with `target="_blank"`, shift+clicking on a link, or submitting a form with `form target="_blank"`.
+    /// </summary>
+    /// <param name="handler">Handler function to be called from .NET</param>
+    /// <returns></returns>
+    public void SetWindowOpenHandler(Action<string, string, string, string> handler)
+    {
+        // Subscribe for setWindowOpenHandler parameters
+        BridgeConnector.Socket.Off("webContents-setWindowOpenHandler-emitted" + Id);
+        BridgeConnector.Socket.On("webContents-setWindowOpenHandler-emitted" + Id, (_details) =>
+        {
+            var details = (JObject)_details;
+
+            // Call .NET handler
+            _setWindowOpenHandler?.Invoke(details["url"]?.Value<string>(), details["frameName"]?.Value<string>(), 
+                details["features"]?.Value<string>(), details["disposition"]?.Value<string>());
+        });
+
+        _setWindowOpenHandler = handler;
+
+        BridgeConnector.Socket.Emit("webContents-setWindowOpenHandler", Id);
     }
 
     private readonly JsonSerializer _jsonSerializer = new()

@@ -1,7 +1,9 @@
 import { Socket } from 'net';
 import { BrowserWindow, BrowserView } from 'electron';
 import { browserViewMediateService } from './browserView';
+
 const fs = require('fs');
+
 let electronSocket;
 
 export = (socket: Socket) => {
@@ -334,6 +336,16 @@ export = (socket: Socket) => {
     const extension = await browserWindow.webContents.session.loadExtension(path, { allowFileAccess: allowFileAccess });
 
     electronSocket.emit('webContents-session-loadExtension-completed', extension);
+  });
+
+  // Handle WebContents.SetWindowOpenHandler from .NET
+  socket.on('webContents-setWindowOpenHandler', (id) => {
+      const browserWindow = getWindowById(id);
+
+      browserWindow.webContents.setWindowOpenHandler((details) => {
+          electronSocket.emit('webContents-setWindowOpenHandler-emitted' + id, details);
+          return {action: 'deny'};
+      });
   });
 
   function getWindowById(id: number): Electron.BrowserWindow | Electron.BrowserView {

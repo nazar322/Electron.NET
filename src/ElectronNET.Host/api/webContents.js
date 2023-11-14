@@ -266,6 +266,14 @@ module.exports = (socket) => {
         const extension = await browserWindow.webContents.session.loadExtension(path, { allowFileAccess: allowFileAccess });
         electronSocket.emit('webContents-session-loadExtension-completed', extension);
     });
+    // Handle WebContents.SetWindowOpenHandler from .NET
+    socket.on('webContents-setWindowOpenHandler', (id) => {
+        const browserWindow = getWindowById(id);
+        browserWindow.webContents.setWindowOpenHandler((details) => {
+            electronSocket.emit('webContents-setWindowOpenHandler-emitted' + id, details);
+            return { action: 'deny' };
+        });
+    });
     function getWindowById(id) {
         if (id >= 1000) {
             return (0, browserView_1.browserViewMediateService)(id - 1000);
