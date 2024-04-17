@@ -94,11 +94,11 @@ class Build : NukeBuild
 
             if (ScheduledTargets.Contains(Default))
             {
-                Version = $"{Version}-ci-{buildNumber}";
+                Version = $"{Version}-ci.{buildNumber}";
             }
             else if (ScheduledTargets.Contains(PrePublish))
             {
-                Version = $"{Version}-alpha-{buildNumber}";
+                Version = $"{Version}-alpha.{buildNumber}";
             }
         }
 
@@ -130,6 +130,7 @@ class Build : NukeBuild
             {
                 DotNetBuild(s => s
                     .SetProjectFile(project)
+                    .SetVersion(Version)
                     .SetConfiguration(Configuration)
                     .EnableNoRestore());
             });
@@ -162,6 +163,7 @@ class Build : NukeBuild
                     .SetOutputDirectory(ResultDirectory)
                     .SetIncludeSymbols(true)
                     .SetSymbolPackageFormat("snupkg")
+                    .EnableNoRestore()
                 );
             });
         });

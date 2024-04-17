@@ -1,10 +1,38 @@
+# 23.6.2
+
+## ElectronNET.API
+
+* Fixed escaping of URL (#735) @cosmo0
+* Fixed huge memory waste in IpcMain.Once (#833) @Yuvix25
+* Fixed enabling of accessibility support (#798) @dlanorok
+* Updated `Display` to current spec (#828) @Yuvix25
+* Changed `ZoomFactor` type from `int` to `double` (#754) @Yuvix25
+* Added splash screen size config (#822) @NickRimmer
+* Added OSX ARM architecture detection (#821) @sajmonr
+* Added support for `did-navigate` event (#819) @NickRimmer
+* Added support for `will-redirect` event (#819) @NickRimmer
+* Added support for `did-fail-load` event (#819) @NickRimmer
+* Added support for `did-start-navigation` event (#819) @NickRimmer
+* Added support for `did-redirect-navigation` event (#819) @NickRimmer
+* Added support for `dom-ready` event (#813) @softworkz
+
+## ElectronNET.CLI
+
+* (none)
+
+## Infrastructure
+
+* Changed build system to NUKE (#757) @FlorianRappl
+* Updated target framework for host project (#753) @r-pankevicius
+* Fixed typo in README (#800) @franpersanchez
+
 # 23.6.1
 
-ElectronNET.CLI:
+## ElectronNET.CLI
 
 * New Feature: Upgrade to .NET 6 support
 
-ElectronNET.API:
+## ElectronNET.API
 
 * New Feature: Native Electron 23.2.0 support, but not all new API features included (we search contributors) 
 * New Feature: Upgrade to .NET 6 support
