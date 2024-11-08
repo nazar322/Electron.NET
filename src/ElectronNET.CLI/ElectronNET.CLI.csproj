@@ -6,10 +6,10 @@
     <ToolCommandName>electronize</ToolCommandName>
     <PackageType>DotnetCliTool</PackageType>
     <PackageOutputPath>..\..\artifacts</PackageOutputPath>
-    <PackageId>ElectronNET.CLI</PackageId>
+    <PackageId>nazar322.ElectronNET.CLI</PackageId>
     <!-- Version 99 is just set for local development stuff to avoid a conflict with "real" packages on NuGet.org -->
     <Version>99.0.0.0</Version>
-    <Authors>Gregor Biswanger, Florian Rappl</Authors>
+    <Authors>Gregor Biswanger, Florian Rappl, Nazar</Authors>
     <Product>Electron.NET</Product>
     <Company />
     <Description>
@@ -17,8 +17,8 @@
       This package contains the dotnet tooling to electronize your application.
     </Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/ElectronNET/Electron.NET/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ElectronNET/Electron.NET/</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/nazar322/Electron.NET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nazar322/Electron.NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageTags>electron aspnetcore</PackageTags>

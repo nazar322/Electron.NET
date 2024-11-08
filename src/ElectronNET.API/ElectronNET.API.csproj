@@ -2,15 +2,15 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageOutputPath>..\..\artifacts</PackageOutputPath>
-    <PackageId>ElectronNET.API</PackageId>
-    <Authors>Gregor Biswanger, Florian Rappl</Authors>
+    <PackageId>nazar322.ElectronNET.API</PackageId>
+    <Authors>Gregor Biswanger, Florian Rappl, Nazar</Authors>
     <Company />
     <Product>Electron.NET</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/ElectronNET/Electron.NET/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/nazar322/Electron.NET</PackageProjectUrl>
     <Description>Building cross platform electron based desktop apps with .NET Core and ASP.NET Core.
 This package contains the API to access the "native" electron API.</Description>
-    <RepositoryUrl>https://github.com/ElectronNET/Electron.NET/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/nazar322/Electron.NET</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <PackageTags>electron aspnetcore</PackageTags>
