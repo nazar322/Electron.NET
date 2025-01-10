@@ -6,7 +6,7 @@
     "url": "https://github.com/ElectronNET/Electron.NET"
   },
   "main": "main.js",
-  "author": "Gregor Biswanger, Florian Rappl",
+  "author": "Gregor Biswanger, Florian Rappl, Nazar Grynko",
   "license": "MIT",
   "scripts": {
     "start": "tsc -p ."
