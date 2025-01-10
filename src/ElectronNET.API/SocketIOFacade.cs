@@ -2,26 +2,24 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using SocketIOClient;
-using SocketIOClient.Newtonsoft.Json;
 
 namespace ElectronNET.API;
 
 internal class SocketIoFacade
 {
-    private readonly SocketIO _socket;
+    private readonly SocketIOClient.SocketIO _socket;
 
     public SocketIoFacade(string uri)
     {
-        _socket = new SocketIO(uri);
-        var jsonSerializer = new NewtonsoftJsonSerializer(new JsonSerializerSettings
+        _socket = new SocketIOClient.SocketIO(uri);
+        var jsonSerializer = new SocketIO.Serializer.NewtonsoftJson.NewtonsoftJsonSerializer(new JsonSerializerSettings
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore
         });
 
-        _socket.JsonSerializer = jsonSerializer;
+        _socket.Serializer = jsonSerializer;
     }
 
     public void Connect()
