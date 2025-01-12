@@ -1,3 +1,13 @@
+# 23.6.3
+
+## ElectronNET.API
+
+* SocketIOClient updated
+
+## ElectronNET.Host
+
+* Dependencies updated
+
 # 23.6.2
 
 ## ElectronNET.API
