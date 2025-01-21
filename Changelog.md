@@ -1,3 +1,9 @@
+# 23.6.4
+
+## ElectronNET.API
+
+* Skip spamming clipboard content in the console via `electronize start`
+
 # 23.6.3
 
 ## ElectronNET.API
