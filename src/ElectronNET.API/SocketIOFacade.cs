@@ -65,7 +65,11 @@ internal class SocketIoFacade
         _socket.On(eventName, response =>
         {
             var value = response.GetValue<object>();
-            Console.WriteLine($"Called Event {eventName} - data {value}");
+
+            // Skip spamming clipboard content
+            if (!eventName.Equals("clipboard-readText-Completed"))
+                Console.WriteLine($"Called Event {eventName} - data {value}");
+
             Task.Run(() => action(value));
         });
     }
