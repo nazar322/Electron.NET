@@ -58,6 +58,7 @@ class Build : NukeBuild
 
     SemVersion SemVersion { get; set; }
 
+    [Nuke.Common.Parameter("Sets product version")]
     string Version { get; set; }
 
     AbsolutePath[] Projects
@@ -82,9 +83,13 @@ class Build : NukeBuild
         LatestReleaseNotes = ChangeLog.First();
         LatestReleaseNotes.NotNull("LatestVersion could not be read!");
 
-        Log.Debug("Using LastestVersion from ChangeLog: {LatestVersion}", LatestReleaseNotes.Version);
         SemVersion = LatestReleaseNotes.SemVersion;
-        Version = LatestReleaseNotes.Version.ToString();
+
+        if (string.IsNullOrEmpty(Version))
+        {
+            Log.Debug("Using LastestVersion from ChangeLog: {LatestVersion}", LatestReleaseNotes.Version);
+            Version = LatestReleaseNotes.Version.ToString();
+        }
 
         if (GitHubActions != null)
         {
